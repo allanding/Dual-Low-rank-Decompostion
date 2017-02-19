@@ -1,13 +1,12 @@
-# Dual-Low-rank-Decompostion
-# AAAI 16 work
-# min ||Zi||_*+||Zp||_*+\lambda||E||_1+\alpha G(Li,Lp,Zi,Zp), s.t., P'X = P'XZi+P'XZp+E.
-# for more detail, please check our AAAI-16 paper
-# @inproceedings{ding2016robust,
-#   title={Robust Multi-view Subspace Learning through Dual Low-rank Decompositions},
-#   author={Ding, Zhengming and Fu, Yun},
-#   booktitle={The Thirtieth AAAI Conference on Artificial Intelligence },
-#   year={2016}
-#}
+
+ min ||Zi||_*+||Zp||_*+\lambda||E||_1+\alpha G(Li,Lp,Zi,Zp), s.t., P'X = P'XZi+P'XZp+E.
+ for more detail, please check our AAAI-16 paper
+ @inproceedings{ding2016robust,
+   title={Robust Multi-view Subspace Learning through Dual Low-rank Decompositions},
+   author={Ding, Zhengming and Fu, Yun},
+   booktitle={The Thirtieth AAAI Conference on Artificial Intelligence },
+   year={2016}
+}
 
 
 main_2v.m is the main function
