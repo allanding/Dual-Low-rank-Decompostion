@@ -11,8 +11,11 @@
 
 
 main_2v.m is the main function
+
 RMSL.m is our key function for dual low-rank decompostion
+
 constructW.m is used to construct the weight of graph
+
 cvKnn.m and cvEudist.m is the kNN classifier.
 
 2view.mat is the evaluation data.
