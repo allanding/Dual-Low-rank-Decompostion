@@ -107,7 +107,7 @@ while iter<maxIter
     %% check convergence
     stopC = norm(leq1,'inf');
     disp(stopC)
-%     if stopC<10e-9
-%         break;
-%     end
+    if stopC<10e-9
+        break;
+    end
 end
