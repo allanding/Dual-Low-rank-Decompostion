@@ -18,7 +18,7 @@
 
 main_2v.m is the main function
 
-RMSL.m is our key function for dual low-rank decompostion
+RMSL.m is our key function for dual low-rank decompostion, which has two solutions.
 
 constructW.m is used to construct the weight of graph
 
