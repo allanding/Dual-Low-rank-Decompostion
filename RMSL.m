@@ -1,4 +1,4 @@
-function Pa = RMSL(X, alpha, lambda, dp, Li, Lp)
+function Pa = RMSL(X, Li, Lp, opt)
 
 %% min ||Zi||_*+||Zp||_*+\lambda||E||_1+\alpha G(Li,Lp,Zi,Zp), s.t., P'X = P'XZi+P'XZp+E.
 %% for more detail, please check our AAAI-16 paper
@@ -10,7 +10,12 @@ function Pa = RMSL(X, alpha, lambda, dp, Li, Lp)
 %% }
 
 %% initialize parameters
-maxIter = 100;
+maxIter = opt.maxIter;
+alpha = opt.alpha;
+lambda = opt.lambda;
+dp = opt.dim;
+sol = opt.solution;
+
 [d, n] = size(X);
 
 %% you could set these paramters manually
@@ -77,18 +82,23 @@ while iter<maxIter
     
     %% update P
     Zn = Zi*Li*Zi'-Zp*Lp*Zp';
-    P1 = 2*alpha*X*Zn*X'+mu*Xn*Xn';
-    P2 = Xn*(E-Y1/mu)';
-    P = P1\P2;
-    
-    try
-        P = orth(P);
-        Pa{iter} = P;
-        disp(['iter number is ' num2str(iter)])
-    catch
-        warning('P is optimized over.');
-        break
+    if sol ==1
+        P1 = 2*alpha*X*Zn*X'+mu*Xn*Xn';
+        P2 = Xn*(E-Y1/mu)';
+        P = P1\P2;
+        
+        try
+            P = orth(P);
+            disp(['iter number is ' num2str(iter)])
+        catch
+            warning('P is optimized over.');
+            break
+        end
+    elseif sol == 2
+        addpath('./FOptM')
+        P = optimizingP(P,X,Xn,Zn,E,Y1,alpha,mu,100);
     end
+    Pa{iter} = P;
     
     %% update parameters
     leq1 = xmaz-E;
@@ -97,7 +107,7 @@ while iter<maxIter
     %% check convergence
     stopC = norm(leq1,'inf');
     disp(stopC)
-    if stopC<10e-9
-        break;
-    end
+%     if stopC<10e-9
+%         break;
+%     end
 end
