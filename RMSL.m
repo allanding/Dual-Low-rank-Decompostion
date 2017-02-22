@@ -10,11 +10,11 @@ function Pa = RMSL(X, Li, Lp, opt)
 %% }
 
 %% initialize parameters
-maxIter = opt.maxIter;
-alpha = opt.alpha;
-lambda = opt.lambda;
-dp = opt.dim;
-sol = opt.solution;
+maxIter = opt.maxIter; %% max iterations to optimize RMSL
+alpha = opt.alpha; %% parameter for graph
+lambda = opt.lambda; %% parameter for error term
+dp = opt.dim; %% dimension for the low-dimensional subspace
+sol = opt.solution; %% option for optimizing P
 
 [d, n] = size(X);
 
